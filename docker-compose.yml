@@ -1,17 +1,13 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:8.0
     container_name: timeline-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: timeline
-      MYSQL_USER: timeline
-      MYSQL_PASSWORD: timeline123
-    ports:
-      - '3306:3306'
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -29,14 +25,12 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 3306
-      DB_USER: timeline
-      DB_PASSWORD: timeline123
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
       DB_NAME: timeline
-      JWT_SECRET: change-me-to-a-random-secret-in-production
+      JWT_SECRET: ${JWT_SECRET}
       PORT: 3000
       HOST: 0.0.0.0
-    ports:
-      - '3000:3000'
     depends_on:
       db:
         condition: service_healthy
