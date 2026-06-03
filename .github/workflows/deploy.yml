@@ -45,12 +45,15 @@ jobs:
         script: |
           cd /myapp/timeline/
           
+          # Configure Docker to use amd64 as default platform
+          export DOCKER_DEFAULT_PLATFORM=linux/amd64
+          
           # Stop and remove existing container
           docker stop timeline-app || true
           docker rm timeline-app || true
           
-          # Build new image
-          docker build -t timeline-app .
+          # Build new image for AMD64 platform (compatible with Tencent Cloud CVM)
+          docker build --platform linux/amd64 -t timeline-app .
           
           # Run container
           docker run -d \

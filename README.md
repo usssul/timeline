@@ -106,6 +106,17 @@ npm run build
 npm test
 ```
 
+## 界面截图
+
+### 主时间线界面
+![主时间线界面](screenshots/home.png)
+
+### 导入数据界面
+![导入数据界面](screenshots/import.png)
+
+### 添加事件界面
+![添加事件界面](screenshots/save.png)
+
 ## 部署到腾讯云 CVM (Docker 环境)
 
 本项目支持通过 GitHub Actions 自动部署到腾讯云 CVM 的 Docker 环境。详细配置说明请参考 [DEPLOYMENT.md](DEPLOYMENT.md) 文件。
